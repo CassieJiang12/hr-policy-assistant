@@ -8,3 +8,5 @@ build/
 !.env.example
 coverage/
 .vite/
+server/data/
+data/policy-index.json

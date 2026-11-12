@@ -29,6 +29,7 @@ export async function requestStructuredAsk(options: {
   instructions: string;
   question: string;
   requestId: string;
+  signal?: AbortSignal;
 }): Promise<StructuredAskResult> {
   const client = new OpenAI({
     apiKey: options.settings.apiKey,
@@ -37,11 +38,10 @@ export async function requestStructuredAsk(options: {
     logLevel: 'off',
   });
 
-  const controller = new AbortController();
-  const deadline = setTimeout(
-    () => controller.abort(),
-    options.timeouts.deadlineMs,
-  );
+  const owned = options.signal ? undefined : new AbortController();
+  const deadline = owned
+    ? setTimeout(() => owned.abort(), options.timeouts.deadlineMs)
+    : undefined;
 
   let response: ParsedResponse;
   try {
@@ -54,12 +54,14 @@ export async function requestStructuredAsk(options: {
           format: zodTextFormat(modelAskOutputSchema, MODEL_OUTPUT_SCHEMA_NAME),
         },
       },
-      { signal: controller.signal },
+      { signal: options.signal ?? owned?.signal },
     );
   } catch (error) {
     throw mapOpenAiFailure(error, options.requestId);
   } finally {
-    clearTimeout(deadline);
+    if (deadline) {
+      clearTimeout(deadline);
+    }
   }
 
   if (response.status === 'incomplete') {

@@ -9,6 +9,7 @@ type EvalCase = {
   question: string;
   expected_status: AskStatus;
   expected_evidence_ids: string[];
+  expected_retrieval_ids?: string[];
   rubric: string;
 };
 
@@ -101,6 +102,7 @@ for (const evalCase of cases) {
         question: evalCase.question,
         expected_status: evalCase.expected_status,
         expected_evidence_ids: evalCase.expected_evidence_ids,
+        expected_retrieval_ids: evalCase.expected_retrieval_ids ?? [],
         actual_status: null,
         actual_answer: null,
         actual_source_ids: [],
@@ -162,6 +164,7 @@ for (const evalCase of cases) {
       question: evalCase.question,
       expected_status: evalCase.expected_status,
       expected_evidence_ids: evalCase.expected_evidence_ids,
+      expected_retrieval_ids: evalCase.expected_retrieval_ids ?? [],
       actual_status: result.body.status ?? null,
       actual_answer: result.body.answer ?? null,
       actual_source_ids: actualIds,

@@ -15,8 +15,10 @@
     "start:dev": "nest start --watch",
     "start:prod": "node dist/main.js",
     "typecheck": "tsc -p tsconfig.build.json --noEmit",
-    "test": "tsx --test src/ask/parse-question.spec.ts src/ask/validate-model-output.spec.ts src/ask/map-openai-error.spec.ts src/eval/score-case.spec.ts",
-    "eval:cases": "tsx src/eval/run-eval.ts"
+    "test": "tsx --test src/ask/parse-question.spec.ts src/ask/validate-model-output.spec.ts src/ask/map-openai-error.spec.ts src/ask/ask-flow.spec.ts src/eval/score-case.spec.ts src/eval/recall.spec.ts src/retrieval/cosine.spec.ts src/retrieval/index.spec.ts",
+    "index:policies": "tsx src/retrieval/index-policies.ts",
+    "eval:cases": "tsx src/eval/run-eval.ts",
+    "eval:retrieval": "tsx src/eval/run-retrieval-eval.ts"
   },
   "dependencies": {
     "@nestjs/common": "^12.3.2",

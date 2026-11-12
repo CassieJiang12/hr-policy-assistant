@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { dirname, isAbsolute, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { validatePolicyRecords } from './validate-policy-records.js';
 
 export type PolicyRecord = {
   id: string;
@@ -22,24 +23,24 @@ export function loadPolicies(): PolicyRecord[] {
   }
 
   const path = resolvePoliciesPath();
-  const parsed = JSON.parse(readFileSync(path, 'utf8')) as PoliciesFile;
-  if (!Array.isArray(parsed.documents) || parsed.documents.length === 0) {
-    throw new Error('policies.json must contain a documents array.');
-  }
-
-  cached = parsed.documents.map((row) => ({
-    id: row.id,
-    document: row.document,
-    text: row.text,
-  }));
+  cached = readPolicyDocuments(path);
   return cached;
+}
+
+export function readPolicyDocuments(path: string): PolicyRecord[] {
+  const parsed = JSON.parse(readFileSync(path, 'utf8')) as PoliciesFile;
+  return validatePolicyRecords(parsed.documents);
+}
+
+export function clearPolicyCache(): void {
+  cached = undefined;
 }
 
 export function policyById(policies: PolicyRecord[]): Map<string, PolicyRecord> {
   return new Map(policies.map((policy) => [policy.id, policy]));
 }
 
-function resolvePoliciesPath(): string {
+export function resolvePoliciesPath(): string {
   const override = process.env.POLICIES_PATH?.trim();
   if (override) {
     return isAbsolute(override)

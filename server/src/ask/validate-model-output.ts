@@ -44,7 +44,7 @@ export function validateModelOutput(
   const unknown = evidenceIds.filter((id) => !byId.has(id));
   if (unknown.length > 0) {
     throw new ModelOutputValidationError(
-      `Unknown evidence_id values were rejected: ${unknown.join(', ')}.`,
+      `Evidence IDs were not in the policy excerpts provided to the model: ${unknown.join(', ')}.`,
     );
   }
 
