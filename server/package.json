@@ -1,0 +1,40 @@
+{
+  "name": "hr-policy-assistant-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NestJS API for HR Policy Assistant",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main.js",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit",
+    "test": "tsx --test src/ask/parse-question.spec.ts src/ask/validate-model-output.spec.ts src/ask/map-openai-error.spec.ts src/eval/score-case.spec.ts",
+    "eval:cases": "tsx src/eval/run-eval.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.3.2",
+    "@nestjs/config": "^12.0.1",
+    "@nestjs/core": "^12.3.2",
+    "@nestjs/platform-express": "^12.3.2",
+    "dotenv": "^18.0.9",
+    "openai": "^7.45.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^12.0.11",
+    "@nestjs/schematics": "^12.0.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.9.1",
+    "tsx": "^4.20.6",
+    "typescript": "~6.0.2"
+  }
+}

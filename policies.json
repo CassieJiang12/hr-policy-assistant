@@ -1,0 +1,36 @@
+{
+  "fictional": true,
+  "company": "DemoCo",
+  "documents": [
+    {
+      "id": "PTO-01",
+      "document": "Leave Policy",
+      "text": "US full-time employees receive 15 paid vacation days per calendar year."
+    },
+    {
+      "id": "PTO-02",
+      "document": "Leave Policy",
+      "text": "Vacation requests must be submitted at least 3 business days in advance and require manager approval."
+    },
+    {
+      "id": "EXP-01",
+      "document": "Expense Policy",
+      "text": "US full-time employees may claim up to USD 35 per meal during approved business travel. Alcohol is not reimbursable."
+    },
+    {
+      "id": "EXP-02",
+      "document": "Expense Policy",
+      "text": "Itemized receipts must be submitted within 30 calendar days after the expense date."
+    },
+    {
+      "id": "REM-01",
+      "document": "Remote Work Policy",
+      "text": "US full-time employees may work remotely up to 2 days per week with manager approval."
+    },
+    {
+      "id": "REM-02",
+      "document": "Remote Work Policy",
+      "text": "Remote employees must be available from 10 AM to 3 PM Eastern Time on working days."
+    }
+  ]
+}

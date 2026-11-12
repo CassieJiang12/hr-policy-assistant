@@ -1,0 +1,126 @@
+:root {
+  font-family: system-ui, 'Segoe UI', sans-serif;
+  line-height: 1.45;
+  color: #1b1b1b;
+  background: #f6f4f1;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.mode-banner {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.8rem;
+  font-weight: 700;
+}
+
+.mode-mock {
+  background: #ffe08a;
+  border: 2px solid #b8860b;
+}
+
+.mode-real {
+  background: #d8f0d8;
+  border: 2px solid #2f6f2f;
+}
+
+.mode-real-unconfigured,
+.mode-unknown {
+  background: #fde8e8;
+  border: 2px solid #8b0000;
+}
+
+h1 {
+  margin: 0 0 0.4rem;
+  font-size: 1.8rem;
+}
+
+.lede,
+.hint,
+.meta {
+  color: #444;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.25rem 0;
+}
+
+textarea {
+  font: inherit;
+  padding: 0.6rem;
+}
+
+button {
+  font: inherit;
+  width: fit-content;
+  padding: 0.45rem 0.8rem;
+}
+
+.example {
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: #0b57d0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.loading {
+  font-style: italic;
+}
+
+.error {
+  color: #8b0000;
+  background: #fde8e8;
+  padding: 0.6rem 0.8rem;
+}
+
+button:disabled,
+textarea:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.sources h2 {
+  font-size: 1.05rem;
+  margin: 0.9rem 0 0.35rem;
+}
+
+.source-card {
+  border: 1px solid #ccc;
+  padding: 0.45rem 0.6rem;
+  margin: 0.4rem 0;
+  background: #fafafa;
+}
+
+.source-card summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.answer {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 0.9rem;
+}
+
+.fixture-label {
+  font-weight: 700;
+  color: #7a4d00;
+}
+
+.real-label {
+  font-weight: 700;
+  color: #2f6f2f;
+}
